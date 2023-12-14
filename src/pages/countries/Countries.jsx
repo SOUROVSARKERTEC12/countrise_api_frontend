@@ -2,9 +2,11 @@ import {useEffect, useState} from 'react';
 import * as C from './styles';
 import {Input} from '../../components/Input/Input.jsx';
 import CountryItem from '../../components/Countryitem/CountryItem.jsx';
+import {useForm} from '../../contexts/ThemeContext';
 import {api} from '../../api/api.jsx';
 
 export const Countries = () => {
+    const {state} = useForm();
     const [search, setSearch] = useState('')
     const [loading, setLoading] = useState(false);
     const [countries, setCountries] = useState([]);
@@ -38,7 +40,7 @@ export const Countries = () => {
 
 
     return (
-        <C.CountriesArea>
+        <C.CountriesArea theme={state.theme}>
             <Input
                 value={search}
                 search={setSearch}

@@ -2,11 +2,10 @@ import styled from "styled-components";
 
 export const Header = styled.header`
     height: 90px;
-    background-color: ${(props) => (props.theme === 'light' ? '' : 'rgb(43, 55, 67)')};
-    color: ${(props) => (props.theme === 'light' ? '' : '#FFF')};
+    background-color: ${(props) => (props.theme === 'light' ? 'transparent' : 'rgb(43, 55, 67)')};
+    color: ${(props) => (props.theme === 'light' ? 'inherit' : '#FFF')};
     transition: all ease 0.2s;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-    //transition: all ease 0.2s;
 
     .container {
         display: flex;

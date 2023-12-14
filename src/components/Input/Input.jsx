@@ -1,12 +1,14 @@
 import * as C from './styles';
-import { useState } from 'react';
+import {useState} from 'react';
 import useDebounce from './useDebounce';
+import {useForm} from '../../contexts/ThemeContext';
 
 const delay = 500;
 
 // eslint-disable-next-line react/prop-types
-export const Input = ({search,value}) => {
+export const Input = ({search, value}) => {
 
+    const {state} = useForm();
     const [input, setInput] = useState('');
 
     const debouncedChange = useDebounce(search, delay);
@@ -17,7 +19,7 @@ export const Input = ({search,value}) => {
     };
 
     return (
-        <C.InputArea>
+        <C.InputArea theme={state.theme}>
             <input
                 type="text"
                 placeholder="Search By Country"

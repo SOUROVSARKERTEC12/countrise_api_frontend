@@ -2,9 +2,11 @@ import * as C from './styles';
 import { Link, useParams } from 'react-router-dom';
 import { SingleCountry } from '../../components/SingleCountry/SingleCountry.jsx';
 import { useEffect, useState } from 'react';
+import {useForm} from '../../contexts/ThemeContext';
 import { api } from '../../api/api.jsx';
 
 export const CountryPage = () => {
+  const {state} = useForm();
   const { name, code } = useParams();
   const [loading, setLoading] = useState(false);
   const [country, setCountry] = useState(null);
@@ -32,7 +34,7 @@ export const CountryPage = () => {
   }, [name, code]);
 
   return (
-    <C.CountryPage>
+    <C.CountryPage theme={state.theme}>
       <div className='container'>
         <Link to="/" className='back--button'>Back</Link>
         {loading && <div className='loading'>Loading...</div>}
