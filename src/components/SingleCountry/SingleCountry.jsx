@@ -34,10 +34,10 @@ export const SingleCountry = ({
                         <p className='topLevel'><span>Top Level Domain: </span>{topLevelDomain}</p>
                     }
                     {currenciesArray.length > 0 &&
-                        <p><span>Currencies: </span>{currenciesArray.map(item => item.name)}</p>
+                        <p><span>Currencies: </span>{currenciesArray.map(item => item.name).join(', ')}</p>
                     }
                     {languagesArray.length > 0 &&
-                        <p><span>Languages: </span>{languagesArray.map(language => language)}</p>
+                        <p><span>Languages: </span>{languagesArray.map(language => language).join(', ')}</p>
                     }
                 </div>
                 {borders && borders.length > 0 &&
