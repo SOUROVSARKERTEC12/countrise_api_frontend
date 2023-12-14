@@ -3,13 +3,18 @@ import * as C from './styles';
 import {Input} from '../../components/Input/Input.jsx';
 import CountryItem from '../../components/Countryitem/CountryItem.jsx';
 import {useForm} from '../../contexts/ThemeContext';
+import Pagination from './Pagination'
 import {api} from '../../api/api.jsx';
+
+
+const LIMIT = 12;
 
 export const Countries = () => {
     const {state} = useForm();
     const [search, setSearch] = useState('')
     const [loading, setLoading] = useState(false);
     const [countries, setCountries] = useState([]);
+    const [offset, setOffset] = useState(0);
 
     useEffect(() => {
         getAllCountries();
@@ -38,6 +43,8 @@ export const Countries = () => {
         );
     });
 
+     const pagCountries = filteredCountries.slice(offset, offset+12)
+
 
     return (
         <C.CountriesArea theme={state.theme}>
@@ -48,7 +55,7 @@ export const Countries = () => {
             <div className="countries">
                 {loading && <div className="loading">Loading...</div>}
                 {!loading &&
-                    filteredCountries.map((item) => (
+                    pagCountries.map((item) => (
                         <CountryItem
                             key={item.numericCode}
                             name={item.name.common}
@@ -60,6 +67,12 @@ export const Countries = () => {
                         />
                     ))}
             </div>
+            <Pagination
+                limit={LIMIT}
+                total={filteredCountries.length}
+                offset={offset}
+                setOffset={setOffset}
+            />
         </C.CountriesArea>
     );
 };

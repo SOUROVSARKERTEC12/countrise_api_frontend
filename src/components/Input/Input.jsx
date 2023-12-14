@@ -6,7 +6,7 @@ import {useForm} from '../../contexts/ThemeContext';
 const delay = 500;
 
 // eslint-disable-next-line react/prop-types
-export const Input = ({search, value}) => {
+export const Input = ({search}) => {
 
     const {state} = useForm();
     const [input, setInput] = useState('');

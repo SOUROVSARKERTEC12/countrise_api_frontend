@@ -1,11 +1,13 @@
 import {Link} from 'react-router-dom';
 import * as C from './styles'; // Assuming that './styles' is the correct path
+import {useForm} from '../../contexts/ThemeContext';
 
 // eslint-disable-next-line react/prop-types
 const CountryItem = ({name, population, region, capital, flag, timezones}) => {
+    const {state} = useForm();
 
     return (
-        <C.CountryItem>
+        <C.CountryItem theme={state.theme}>
             <Link to={`/country/${name}`}>
                 <div className='img--area'>
                     <img src={flag} alt={`country: ${name}`}/>

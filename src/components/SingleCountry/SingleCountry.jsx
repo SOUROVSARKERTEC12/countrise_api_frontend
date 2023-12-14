@@ -1,5 +1,6 @@
 import * as C from './styles';
 import {Link} from 'react-router-dom';
+import {useForm} from "../../contexts/ThemeContext.jsx";
 
 export const SingleCountry = ({
                                   name,
@@ -16,9 +17,10 @@ export const SingleCountry = ({
 
     const currenciesArray = currencies ? Object.values(currencies) : [];
     const languagesArray = languages ? Object.values(languages) : [];
+    const {state} = useForm();
 
     return (
-        <C.CountryData>
+        <C.CountryData theme={state.theme}>
             <img src={flag} alt={`Country: ${name}`}/>
             <div className='data--area'>
                 <h1>{name}</h1>
